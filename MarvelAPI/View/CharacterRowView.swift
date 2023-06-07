@@ -39,6 +39,7 @@ struct CharacterRowView: View {
                                 .navigationTitle(extractURLType(data: url))
                         } label: {
                             Text(extractURLType(data: url))
+                                .font(.system(size: 10))
                         }
 
                     }

@@ -17,6 +17,8 @@ class HomeViewViewModel: ObservableObject{
     
     @Published var searchQuery = ""
     @Published var fetchedCharacters: [Character]? = nil
+    @Published var fetchedComics: [Comic] = []
+    @Published var offset: Int = 0
     
     var searchCancellable: AnyCancellable? = nil
     
@@ -36,10 +38,38 @@ class HomeViewViewModel: ObservableObject{
             })
     }
     
+    func searchComic(){
+        let ts = String(Date().timeIntervalSince1970)
+        let hash = self.md5("\(ts)\(privateKey)\(publicKey)")
+        let url = "https://gateway.marvel.com:443/v1/public/comics?limit=20&offset=\(offset)&ts=\(ts)&apikey=\(publicKey)&hash=\(hash)"
+        
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: URL(string: url)!) { data, _, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let APIData = data else {
+                print("No Data Found")
+                return
+            }
+            
+            do {
+                let comics = try JSONDecoder().decode(APIComicResult.self, from: APIData)
+                DispatchQueue.main.async {
+                    self.fetchedComics.append(contentsOf: comics.data.results)
+                }
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
+    
     func searchCharacter(){
         
         let ts = String(Date().timeIntervalSince1970)
-        let hash = md5("\(ts)\(privateKey)\(publicKey)")
+        let hash = self.md5("\(ts)\(privateKey)\(publicKey)")
         let originalQuery = searchQuery.replacingOccurrences(of: " ", with: "%20")
         let url = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(publicKey)&hash=\(hash)"
         
@@ -69,14 +99,13 @@ class HomeViewViewModel: ObservableObject{
             }
         }.resume()
 
-        func md5(_ string: String) -> String {
-            let inputData = Data(string.utf8)
-            let hashedData = Insecure.MD5.hash(data: inputData)
-            let hashString = hashedData.map { String(format: "%02hhx", $0) }.joined()
-            return hashString
-        }
-
-
+    }
+    
+    func md5(_ string: String) -> String {
+        let inputData = Data(string.utf8)
+        let hashedData = Insecure.MD5.hash(data: inputData)
+        let hashString = hashedData.map { String(format: "%02hhx", $0) }.joined()
+        return hashString
     }
     
 }
