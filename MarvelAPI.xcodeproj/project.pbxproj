@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED4BC9662A304F38001C5BB3 /* CharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BC9652A304F37001C5BB3 /* CharacterRowView.swift */; };
+		ED4BC9692A305048001C5BB3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = ED4BC9682A305048001C5BB3 /* SDWebImageSwiftUI */; };
+		ED4BC96B2A30559C001C5BB3 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BC96A2A30559C001C5BB3 /* WebView.swift */; };
 		ED91D2DF2A2CE8DA007420AC /* MarvelAPIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91D2DE2A2CE8DA007420AC /* MarvelAPIApp.swift */; };
 		ED91D2E12A2CE8DA007420AC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91D2E02A2CE8DA007420AC /* HomeView.swift */; };
 		ED91D2E32A2CE8DC007420AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED91D2E22A2CE8DC007420AC /* Assets.xcassets */; };
@@ -18,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED4BC9652A304F37001C5BB3 /* CharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRowView.swift; sourceTree = "<group>"; };
+		ED4BC96A2A30559C001C5BB3 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		ED91D2DB2A2CE8DA007420AC /* MarvelAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED91D2DE2A2CE8DA007420AC /* MarvelAPIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIApp.swift; sourceTree = "<group>"; };
 		ED91D2E02A2CE8DA007420AC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4BC9692A305048001C5BB3 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,8 @@
 				ED91D2E02A2CE8DA007420AC /* HomeView.swift */,
 				ED91D2F02A2CE9D6007420AC /* CharactersView.swift */,
 				ED91D2F22A2CE9DD007420AC /* ComicsView.swift */,
+				ED4BC9652A304F37001C5BB3 /* CharacterRowView.swift */,
+				ED4BC96A2A30559C001C5BB3 /* WebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,6 +135,9 @@
 			dependencies = (
 			);
 			name = MarvelAPI;
+			packageProductDependencies = (
+				ED4BC9682A305048001C5BB3 /* SDWebImageSwiftUI */,
+			);
 			productName = MarvelAPI;
 			productReference = ED91D2DB2A2CE8DA007420AC /* MarvelAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -155,6 +166,9 @@
 				Base,
 			);
 			mainGroup = ED91D2D22A2CE8DA007420AC;
+			packageReferences = (
+				ED4BC9672A305048001C5BB3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = ED91D2DC2A2CE8DA007420AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,6 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4BC9662A304F38001C5BB3 /* CharacterRowView.swift in Sources */,
+				ED4BC96B2A30559C001C5BB3 /* WebView.swift in Sources */,
 				ED91D2F52A2CE9E8007420AC /* HomeViewViewModel.swift in Sources */,
 				ED91D2F32A2CE9DD007420AC /* ComicsView.swift in Sources */,
 				ED91D2E12A2CE8DA007420AC /* HomeView.swift in Sources */,
@@ -387,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED4BC9672A305048001C5BB3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED4BC9682A305048001C5BB3 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED4BC9672A305048001C5BB3 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ED91D2D32A2CE8DA007420AC /* Project object */;
 }

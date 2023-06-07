@@ -23,7 +23,7 @@ struct CharactersView: View {
                                 .padding(.top, 20)
                         } else {
                             ForEach(characters) { character in
-                                Text(character.name)
+                                CharacterRowView(character: character)
                             }
                         }
                     } else {

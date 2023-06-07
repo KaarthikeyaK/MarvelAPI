@@ -10,10 +10,6 @@ import SwiftUI
 @main
 struct MarvelAPIApp: App {
     
-    init(){
-        HomeViewViewModel().searchCharacter()
-    }
-    
     var body: some Scene {
         WindowGroup {
             HomeView()
